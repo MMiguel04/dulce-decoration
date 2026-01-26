@@ -1,0 +1,191 @@
+/* commun.css - Palette beige féminin chaleureux et élégant */
+
+:root {
+    --beige-principal: #FAF5F0;      /* Beige crème doux, lumineux mais pas trop clair */
+    --beige-accent: #E3D2C1;         /* Beige champagne élégant et chaleureux */
+    --beige-hover: #D2BCA8;          /* Beige plus soutenu pour hover/actif */
+    --gold-dd: #E0C9A6;              /* Or champagne féminin – inchangé */
+    --text: #1A1A1A;
+    --light-bg: #F8F4EE;             /* Fond beige subtil */
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--white);
+    color: var(--text);
+    line-height: 1.7;
+    padding-top: 90px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--beige-accent);
+}
+
+.navbar {
+    background: linear-gradient(to bottom, var(--beige-principal), rgba(227, 210, 193, 0.08));
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 12px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.navbar.scrolled {
+    background: linear-gradient(to bottom, var(--beige-principal), var(--beige-accent));
+    box-shadow: 0 3px 20px rgba(0,0,0,0.06);
+}
+
+/* Logo texte – inchangé */
+.navbar-brand .logo-text {
+    font-size: 2rem;
+}
+
+.dd-part {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    color: var(--gold-dd);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.artdeco-part {
+    font-family: 'Bodoni Moda', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--text);
+}
+
+.nav-link {
+    color: var(--text) !important;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--beige-hover) !important;
+}
+
+.btn-primary {
+    background-color: var(--beige-accent);
+    border: none;
+    border-radius: 50px;
+    padding: 14px 36px;
+    font-weight: 500;
+    transition: all 0.35s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--beige-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(210, 188, 168, 0.2);
+}
+
+.btn-outline-primary {
+    border-color: var(--beige-accent);
+    color: var(--beige-accent);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--beige-accent);
+    color: white;
+}
+
+.section {
+    padding: 100px 0;
+    background-color: var(--white);
+}
+
+.section.light {
+    background-color: var(--light-bg);
+}
+
+.hero {
+    position: relative;
+    min-height: 90vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1, .hero p.lead {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.1s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer {
+    background: linear-gradient(135deg, var(--beige-principal), var(--beige-accent));
+    color: var(--text);
+    padding: 70px 0 40px;
+    text-align: center;
+}
+
+.form-control:focus {
+    border-color: var(--beige-accent);
+    box-shadow: 0 0 0 0.25rem rgba(224, 208, 184, 0.2);
+}
+
+hr.border-2 {
+    border-color: var(--beige-accent);
+    opacity: 0.3;
+    margin: 3rem 0;
+}
+
+@media (max-width: 768px) {
+    .section { padding: 60px 0; }
+    .hero { min-height: 70vh; }
+    body { padding-top: 70px; }
+}
+
+/* Footer moderne et compact */
+.footer {
+    background-color: var(--white);
+    border-top: 1px solid var(--light-bg);
+    color: var(--text);
+}
+
+.footer .social-icons a {
+    transition: color 0.3s;
+}
+
+.footer .social-icons a:hover {
+    color: var(--rose-accent);
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}

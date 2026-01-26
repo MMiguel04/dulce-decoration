@@ -1,0 +1,40 @@
+/* devis.css - Styles spécifiques à la page Devis */
+
+.card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--text);
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--rose-accent);
+    box-shadow: 0 0 0 0.25rem rgba(224, 122, 154, 0.15);
+}
+
+.btn-primary {
+    padding: 0.85rem 3rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+    .card-body {
+        padding: 2rem 1.5rem;
+    }
+    .btn-primary {
+        width: 100%;
+    }
+}
