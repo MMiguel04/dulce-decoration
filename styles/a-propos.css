@@ -9,23 +9,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
 }
 
+/* Overlay sombre */
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45);  /* Overlay sombre pour lisibilité */
+    background: rgba(0, 0, 0, 0.55);
     z-index: 1;
 }
 
+/* Conteneur texte au-dessus de l'overlay */
 .hero .container {
     position: relative;
     z-index: 2;
+    text-align: center;
+    color: white; /* Blanc par défaut pour tout le contenu */
 }
 
-.hero h1, .hero p.lead {
-    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+/* Force blanc sur le titre et le paragraphe lead + ombre forte */
+.hero h1,
+.hero .lead {
+    color: white !important;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Cible ultra-spécifique pour ton paragraphe exact */
+.hero .container p.lead.fs-5 {
+    color: white !important;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9) !important;
 }
 
 /* Responsive */
@@ -36,7 +48,7 @@
     .hero h1 {
         font-size: 2.5rem;
     }
-    .hero p.lead {
+    .hero .lead {
         font-size: 1.2rem;
     }
 }
