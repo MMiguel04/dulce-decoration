@@ -4,8 +4,9 @@
     --beige-principal: #FAF5F0;      /* Beige crème doux, lumineux mais pas trop clair */
     --beige-accent: #E3D2C1;         /* Beige champagne élégant et chaleureux */
     --beige-hover: #D2BCA8;          /* Beige plus soutenu pour hover/actif */
-    --gold-dd: #E0C9A6;              /* Or champagne féminin – inchangé */
+    --gold-dd: #E0C9A6;              /* Or champagne féminin */
     --text: #1A1A1A;
+    --text-muted: #6C757D;           /* Gris doux pour textes secondaires */
     --light-bg: #F8F4EE;             /* Fond beige subtil */
     --white: #FFFFFF;
 }
@@ -43,7 +44,7 @@ h1, h2, h3, h4 {
     box-shadow: 0 3px 20px rgba(0,0,0,0.06);
 }
 
-/* Logo texte – inchangé */
+/* Logo texte */
 .navbar-brand .logo-text {
     font-size: 2rem;
 }
@@ -146,16 +147,9 @@ h1, h2, h3, h4 {
     transform: translateY(0);
 }
 
-.footer {
-    background: linear-gradient(135deg, var(--beige-principal), var(--beige-accent));
-    color: var(--text);
-    padding: 70px 0 40px;
-    text-align: center;
-}
-
 .form-control:focus {
     border-color: var(--beige-accent);
-    box-shadow: 0 0 0 0.25rem rgba(224, 208, 184, 0.2);
+    box-shadow: 0 0 0 0.25rem rgba(227, 210, 193, 0.2);
 }
 
 hr.border-2 {
@@ -164,28 +158,47 @@ hr.border-2 {
     margin: 3rem 0;
 }
 
+/* Footer moderne, compact et pro */
+.footer {
+    background-color: var(--white);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    color: var(--text);
+    padding: 2rem 0 1.5rem;
+}
+
+.footer p,
+.footer a {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--beige-hover);
+    text-decoration: underline;
+}
+
+.footer .social-icons a {
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer .social-icons a:hover {
+    color: var(--beige-accent);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 576px) {
+    .footer .row {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .footer .social-icons {
+        margin-top: 1rem;
+    }
+}
+
 @media (max-width: 768px) {
     .section { padding: 60px 0; }
     .hero { min-height: 70vh; }
     body { padding-top: 70px; }
-}
-
-/* Footer moderne et compact */
-.footer {
-    background-color: var(--white);
-    border-top: 1px solid var(--light-bg);
-    color: var(--text);
-}
-
-.footer .social-icons a {
-    transition: color 0.3s;
-}
-
-.footer .social-icons a:hover {
-    color: var(--rose-accent);
-}
-
-.footer p {
-    margin: 0;
-    font-size: 0.9rem;
 }
