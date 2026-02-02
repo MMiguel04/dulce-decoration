@@ -1,0 +1,14 @@
+[[redirects]]
+  from = "/devis"
+  to = "/pages/devis.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/pages/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/merci"
+  to = "/pages/merci.html"
+  status = 200
