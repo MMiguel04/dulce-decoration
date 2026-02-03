@@ -2,13 +2,16 @@
   from = "/devis"
   to = "/pages/devis.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/contact"
   to = "/pages/contact.html"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/merci"
-  to = "/pages/merci.html"
+  from = "/confirmation"
+  to = "/pages/confirmation.html"
   status = 200
+  force = true
