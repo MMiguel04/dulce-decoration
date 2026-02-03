@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../styles/devis.css">
 
     <!-- Favicon -->
-    <link rel="icon" href="../images/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../images/favicon/favicon.ico">
 </head>
 
 <body>
@@ -25,11 +25,13 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a class="navbar-brand" href="../index.html">
-            <img src="../images/logoNavBar.png" alt="DD ArtDeco" class="img-fluid" style="max-height: 60px;">
+            <img src="../images/logoNavBar.png" alt="DD ArtDeco" style="max-height:60px;">
         </a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="../index.html">Accueil</a></li>
@@ -51,9 +53,13 @@
                 <div class="card border-0 shadow-lg">
                     <div class="card-body p-5">
 
-                        <h1 class="display-5 fw-bold text-center mb-4">Demande de devis</h1>
+                        <h1 class="display-5 fw-bold text-center mb-4">
+                            Demande de devis
+                        </h1>
+
                         <p class="lead text-center text-muted mb-5">
-                            Décrivez votre projet au Mans ou alentours, nous vous répondons sous 24h.
+                            Décrivez votre projet au Mans ou alentours.<br>
+                            Réponse sous 24h.
                         </p>
 
                         <!-- ================= FORMULAIRE ================= -->
@@ -64,12 +70,11 @@
                             data-netlify="true"
                             netlify-honeypot="bot-field"
                         >
-
                             <!-- Obligatoire Netlify -->
                             <input type="hidden" name="form-name" value="devis">
                             <input type="hidden" name="bot-field">
 
-                            <div id="form-content" class="row g-4">
+                            <div class="row g-4">
 
                                 <div class="col-md-6">
                                     <label class="form-label">Nom complet *</label>
@@ -106,8 +111,12 @@
 
                                 <div class="col-12">
                                     <label class="form-label">Détails du projet</label>
-                                    <textarea name="details" class="form-control" rows="6"
-                                        placeholder="Lieu, nombre de personnes, thème, couleurs, budget, inspirations..."></textarea>
+                                    <textarea
+                                        name="details"
+                                        rows="6"
+                                        class="form-control"
+                                        placeholder="Lieu, nombre de personnes, thème, couleurs, budget, inspirations…"
+                                    ></textarea>
                                 </div>
 
                             </div>
@@ -120,19 +129,7 @@
                                     Devis gratuit – réponse sous 24h
                                 </p>
                             </div>
-
                         </form>
-
-                        <!-- ================= CONFIRMATION ================= -->
-                        <div id="confirmation-message" class="text-center mt-5 d-none">
-                            <h2 class="display-5 fw-bold mb-4">Demande envoyée ✅</h2>
-                            <p class="lead mb-5">
-                                Merci pour votre confiance. Nous revenons vers vous très rapidement.
-                            </p>
-                            <a href="../index.html" class="btn btn-primary btn-lg px-5">
-                                Retour à l’accueil
-                            </a>
-                        </div>
 
                     </div>
                 </div>
@@ -142,17 +139,47 @@
     </div>
 </section>
 
+<!-- ================= MODAL CONFIRMATION ================= -->
+<div class="modal fade" id="devisConfirmationModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header border-0">
+                <h5 class="modal-title fs-3 fw-bold">
+                    Demande envoyée ✅
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <p class="lead">
+                    Merci pour votre confiance.<br>
+                    Nous revenons vers vous très rapidement.
+                </p>
+            </div>
+
+            <div class="modal-footer border-0 justify-content-center">
+                <a href="../index.html" class="btn btn-primary btn-lg px-5">
+                    Retour à l’accueil
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- ================= FOOTER ================= -->
 <footer class="footer py-4">
     <div class="container text-center">
-        <p class="mb-2 small text-muted">© 2026 DD ArtDeco – Le Mans et alentours</p>
-        <p class="mb-3 small">
-            <a href="mailto:contact@ddartdeco.fr" class="text-muted text-decoration-none">contact@ddartdeco.fr</a>
-            •
-            <a href="tel:+33612345678" class="text-muted text-decoration-none">06 12 34 56 78</a>
+        <p class="mb-2 small text-muted">
+            © 2026 DD ArtDeco – Le Mans et alentours
+        </p>
+        <p class="small">
+            <a href="mailto:contact@ddartdeco.fr" class="text-muted text-decoration-none">
+                contact@ddartdeco.fr
+            </a>
         </p>
     </div>
 </footer>
+
 <!-- JS -->
 <script src="../js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

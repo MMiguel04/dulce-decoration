@@ -1,72 +1,87 @@
-// script.js - Scripts communs du site DD ArtDeco
-
-// 1. Navbar scroll effect
+// Navbar scroll
 window.addEventListener('scroll', () => {
-    document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 80);
+    document.querySelector('.navbar')?.classList.toggle(
+        'scrolled',
+        window.scrollY > 80
+    );
 });
 
-// 2. Padding top pour navbar fixed
+// Padding navbar
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     if (navbar) {
-        const navbarHeight = navbar.offsetHeight;
-        document.body.style.paddingTop = navbarHeight + 'px';
+        document.body.style.paddingTop = navbar.offsetHeight + 'px';
     }
 });
 
-// 3. Fade-in elements
+// Fade-in animation
 document.addEventListener('DOMContentLoaded', () => {
-    const fadeElements = document.querySelectorAll('.fade-in');
-    if (fadeElements.length === 0) return;
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.15 }
-    );
-
-    fadeElements.forEach(el => observer.observe(el));
-});
-
-// 4. Gestion des formulaires : confirmation sur la même page
-document.addEventListener('DOMContentLoaded', function () {
-    function handleFormConfirmation(formId) {
-        const form = document.getElementById(formId);
-        if (!form) return;
-
-        form.addEventListener('submit', function () {
-            const formContent = document.getElementById('form-content');
-            const confirmation = document.getElementById('confirmation-message');
-
-            if (formContent && confirmation) {
-                formContent.classList.add('d-none');
-                confirmation.classList.remove('d-none');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+    const elements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
             }
         });
-    }
+    }, { threshold: 0.15 });
 
-    // Appliquer à CONTACT
-    handleFormConfirmation('contact-form');
-
-    // Appliquer à DEVIS (si tu as ajouté id="devis-form" sur cette page)
-    handleFormConfirmation('devis-form');
+    elements.forEach(el => observer.observe(el));
 });
 
-// Gestion du formulaire : ouvre la pop-up après envoi
-document.addEventListener('DOMContentLoaded', function () {
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function () {
-            // Ouvre la modal Bootstrap de confirmation
-            const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-            confirmationModal.show();
+// FORMULAIRE CONTACT – Netlify AJAX + modal
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const data = new FormData(form);
+
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(data).toString()
+        })
+        .then(() => {
+            const modal = new bootstrap.Modal(
+                document.getElementById('confirmationModal')
+            );
+            modal.show();
+            form.reset();
+        })
+        .catch(() => {
+            alert("Erreur lors de l'envoi. Merci de réessayer.");
         });
-    }
+    });
+});
+
+
+// FORMULAIRE DEVIS – Netlify AJAX + modal
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('devis-form');
+    if (!form) return;
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const data = new FormData(form);
+
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(data).toString()
+        })
+        .then(() => {
+            const modal = new bootstrap.Modal(
+                document.getElementById('devisConfirmationModal')
+            );
+            modal.show();
+            form.reset();
+        })
+        .catch(() => {
+            alert("Erreur lors de l'envoi du devis. Merci de réessayer.");
+        });
+    });
 });
