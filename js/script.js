@@ -1,11 +1,11 @@
 // script.js - Scripts communs du site DD ArtDeco
 
-// 1. Navbar : effet scroll (fond changé après 80px)
+// 1. Navbar scroll effect
 window.addEventListener('scroll', () => {
     document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 80);
 });
 
-// 2. Ajustement du padding-top du body pour compenser la navbar fixed
+// 2. Padding top pour navbar fixed
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     if (navbar) {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// 3. Fade-in des éléments avec IntersectionObserver
+// 3. Fade-in elements
 document.addEventListener('DOMContentLoaded', () => {
     const fadeElements = document.querySelectorAll('.fade-in');
     if (fadeElements.length === 0) return;
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // On observe une seule fois
+                    observer.unobserve(entry.target);
                 }
             });
         },
@@ -34,16 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach(el => observer.observe(el));
 });
 
-// 4. Gestion des formulaires Netlify + affichage du message de confirmation sur la même page
+// 4. Gestion des formulaires : confirmation sur la même page
 document.addEventListener('DOMContentLoaded', function () {
-    // Fonction réutilisable pour gérer un formulaire
-    function handleFormSuccess(formId, contentId, messageId) {
+    function handleFormConfirmation(formId) {
         const form = document.getElementById(formId);
         if (!form) return;
 
         form.addEventListener('submit', function () {
-            const formContent = document.getElementById(contentId);
-            const confirmation = document.getElementById(messageId);
+            const formContent = document.getElementById('form-content');
+            const confirmation = document.getElementById('confirmation-message');
 
             if (formContent && confirmation) {
                 formContent.classList.add('d-none');
@@ -53,9 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Appliquer à DEVIS
-    handleFormSuccess('devis-form', 'form-content', 'confirmation-message');
+    // Appliquer à CONTACT
+    handleFormConfirmation('contact-form');
 
-    // Appliquer à CONTACT (si la page contact utilise les mêmes ids)
-    handleFormSuccess('contact-form', 'form-content', 'confirmation-message');
+    // Appliquer à DEVIS (si tu as ajouté id="devis-form" sur cette page)
+    handleFormConfirmation('devis-form');
 });
