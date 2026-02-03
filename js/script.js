@@ -59,13 +59,12 @@ document.addEventListener('DOMContentLoaded', function () {
     handleFormConfirmation('devis-form');
 });
 
-// Gestion du formulaire : ouvre la pop-up de confirmation après envoi
+// Gestion du formulaire : ouvre la pop-up après envoi
 document.addEventListener('DOMContentLoaded', function () {
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function () {
-            // On laisse Netlify envoyer le formulaire normalement
-            // On ouvre juste la modal de confirmation
+            // Ouvre la modal Bootstrap de confirmation
             const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
             confirmationModal.show();
         });
