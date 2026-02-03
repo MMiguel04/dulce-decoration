@@ -67,17 +67,16 @@
                                 Décrivez votre projet au Mans ou alentours, nous vous envoyons un devis personnalisé sous 24h.
                             </p>
 
-                            <!-- FORMULAIRE NETLIFY – VERSION CORRIGÉE -->
+                            <!-- Formulaire Netlify Forms – version propre et fonctionnelle -->
                             <form 
                                 name="devis" 
                                 method="POST" 
                                 data-netlify="true" 
                                 netlify-honeypot="bot-field"
                             >
-                                <!-- Anti-spam honeypot (invisible) -->
+                                <!-- Anti-spam honeypot -->
                                 <input type="hidden" name="bot-field" />
 
-                                <!-- Tous tes champs -->
                                 <div class="row g-4">
                                     <div class="col-md-6">
                                         <label class="form-label fw-medium">Nom complet *</label>
@@ -127,8 +126,8 @@
                                     </p>
                                 </div>
 
-                                <!-- Redirection après envoi réussi -->
-                                <input type="hidden" name="_next" value="/merci.html">
+                                <!-- Redirection après envoi -->
+                                <input type="hidden" name="_next" value="/confirmation.html">
                             </form>
                         </div>
                     </div>
