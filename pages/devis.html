@@ -4,25 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demande de devis – DD ArtDeco</title>
-    <meta name="description" content="Demandez votre devis gratuit pour votre événement au Mans et alentours. Décoration personnalisée et sur mesure.">
-    <meta name="keywords" content="devis décoration Le Mans, devis mariage Sarthe, devis gratuit décoratrice">
-    <meta name="author" content="DD ArtDeco">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Demande de Devis - DD ArtDeco">
-    <meta property="og:description" content="Obtenez un devis personnalisé pour votre événement au Mans et alentours.">
-    <meta property="og:image" content="../images/devis-hero.webp">
-    <meta property="og:url" content="https://www.dd-artdeco.com/devis.html">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Devis - DD ArtDeco">
-    <meta name="twitter:description" content="Devis gratuit pour votre événement au Mans et alentours.">
-    <meta name="twitter:image" content="../images/devis-hero.webp">
-
-    <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,400;1,700&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/commun.css">
@@ -38,11 +19,9 @@
             <a class="navbar-brand" href="../index.html">
                 <img src="../images/logoNavBar.png" alt="DD ArtDeco" class="img-fluid" style="max-height: 60px;">
             </a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="../index.html">Accueil</a></li>
@@ -67,17 +46,12 @@
                                 Décrivez votre projet au Mans ou alentours, nous vous envoyons un devis personnalisé sous 24h.
                             </p>
 
-                            <!-- Formulaire Netlify Forms – version propre et fonctionnelle -->
-                            <form 
-                                name="devis" 
-                                method="POST" 
-                                data-netlify="true" 
-                                netlify-honeypot="bot-field"
-                            >
-                                <!-- Anti-spam honeypot -->
+                            <!-- Formulaire Netlify Forms -->
+                            <form id="devis-form" name="devis" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                                <!-- Honeypot anti-spam -->
                                 <input type="hidden" name="bot-field" />
 
-                                <div class="row g-4">
+                                <div class="row g-4" id="form-content">
                                     <div class="col-md-6">
                                         <label class="form-label fw-medium">Nom complet *</label>
                                         <input type="text" name="nom" class="form-control" required>
@@ -108,27 +82,24 @@
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label fw-medium">Détails du projet</label>
-                                        <textarea 
-                                            name="details" 
-                                            class="form-control" 
-                                            rows="6" 
-                                            placeholder="Lieu (Mans ou alentours), nombre de personnes, thème, couleurs préférées, budget indicatif, inspirations..."
-                                        ></textarea>
+                                        <textarea name="details" class="form-control" rows="6" placeholder="Lieu (Mans ou alentours), nombre de personnes, thème, couleurs préférées, budget indicatif, inspirations..."></textarea>
                                     </div>
                                 </div>
 
                                 <div class="text-center mt-5">
-                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5" id="submit-btn">
                                         Envoyer ma demande
                                     </button>
-                                    <p class="mt-3 small text-muted">
-                                        Devis gratuit et sans engagement – réponse sous 24h
-                                    </p>
+                                    <p class="mt-3 small text-muted">Devis gratuit et sans engagement – réponse sous 24h</p>
                                 </div>
-
-                                <!-- Redirection après envoi -->
-                                <input type="hidden" name="_next" value="../confirmation.html">
                             </form>
+
+                            <!-- Message de confirmation (caché au départ) -->
+                            <div id="confirmation-message" class="text-center mt-5 d-none">
+                                <h2 class="display-5 fw-bold mb-4">Confirmation envoyée !</h2>
+                                <p class="lead mb-5">Merci pour votre demande. Nous vous répondons sous 24h.</p>
+                                <a href="../index.html" class="btn btn-primary btn-lg px-5">Retour à l'accueil</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -157,7 +128,23 @@
         </div>
     </footer>
 
+    <!-- Petit script pour cacher le formulaire et afficher le message -->
+    <script>
+        document.getElementById('devis-form').addEventListener('submit', function(e) {
+            // On laisse Netlify gérer l'envoi (pas de e.preventDefault())
+            // On affiche juste le message de succès
+            document.getElementById('form-content').classList.add('d-none');
+            document.getElementById('confirmation-message').classList.remove('d-none');
+        });
+    </script>
+
     <script src="../js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        document.getElementById('form-content').classList.add('d-none');
+        document.getElementById('confirmation-message').classList.remove('d-none');
+    });
+    </script>
 </body>
 </html>
