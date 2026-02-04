@@ -1,4 +1,4 @@
-// Navbar scroll
+// ================= NAVBAR SCROLL =================
 window.addEventListener('scroll', () => {
     document.querySelector('.navbar')?.classList.toggle(
         'scrolled',
@@ -6,7 +6,7 @@ window.addEventListener('scroll', () => {
     );
 });
 
-// Padding navbar
+// ================= PADDING NAVBAR =================
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     if (navbar) {
@@ -14,9 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Fade-in animation
+// ================= FADE-IN =================
 document.addEventListener('DOMContentLoaded', () => {
     const elements = document.querySelectorAll('.fade-in');
+    if (!elements.length) return;
+
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -29,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.forEach(el => observer.observe(el));
 });
 
-// FORMULAIRE CONTACT – Netlify AJAX + modal
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contact-form');
+// ================= NETLIFY FORM HANDLER =================
+function handleNetlifyForm(formId, modalId) {
+    const form = document.getElementById(formId);
     if (!form) return;
 
     form.addEventListener('submit', e => {
@@ -41,47 +43,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         fetch('/', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams(data).toString()
+            body: data // ⚠️ PAS de headers !
         })
         .then(() => {
-            const modal = new bootstrap.Modal(
-                document.getElementById('confirmationModal')
-            );
-            modal.show();
+            const modalElement = document.getElementById(modalId);
+            if (modalElement) {
+                const modal = new bootstrap.Modal(modalElement);
+                modal.show();
+            }
             form.reset();
         })
         .catch(() => {
             alert("Erreur lors de l'envoi. Merci de réessayer.");
         });
     });
+}
+
+// ================= CONTACT =================
+document.addEventListener('DOMContentLoaded', () => {
+    handleNetlifyForm('contact-form', 'confirmationModal');
 });
 
-
-// FORMULAIRE DEVIS – Netlify AJAX + modal
+// ================= DEVIS =================
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('devis-form');
-    if (!form) return;
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-
-        const data = new FormData(form);
-
-        fetch('/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams(data).toString()
-        })
-        .then(() => {
-            const modal = new bootstrap.Modal(
-                document.getElementById('devisConfirmationModal')
-            );
-            modal.show();
-            form.reset();
-        })
-        .catch(() => {
-            alert("Erreur lors de l'envoi du devis. Merci de réessayer.");
-        });
-    });
+    handleNetlifyForm('devis-form', 'devisConfirmationModal');
 });
