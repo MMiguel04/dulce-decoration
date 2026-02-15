@@ -238,3 +238,11 @@ hr.border-2 {
         max-height: 45px;       /* Réduit sur mobile */
     }
 }
+
+
+.navbar .bi-instagram {
+    color: #e1306c;
+}
+.navbar .bi-instagram:hover {
+    color: #c13584;
+}
